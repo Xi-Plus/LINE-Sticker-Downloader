@@ -20,7 +20,7 @@ if($config["type"]==1){
 }else {
 	exit("type error.");
 }
-$folder=$config["sticker_id"]." ".iconv("UTF-8","BIG5//IGNORE",$name);
+$folder="downloads/".$config["sticker_id"]." ".iconv("UTF-8","BIG5//IGNORE",$name);
 mkdir($folder);
 $all=count($download_url);
 foreach($download_url as $count => $url){
