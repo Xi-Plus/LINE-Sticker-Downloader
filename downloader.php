@@ -18,17 +18,16 @@ if (!isset($_SERVER["argv"][2])) {
 	$html  = substr($cont, $start, $end-$start);
 	preg_match_all('/background-image:url\((.*?)\);/', $html, $temp);
 	$download_url = $temp[1];
-} else if (isset($_SERVER["argv"][3])) {
-	if (preg_match("/^\d$/", $_SERVER["argv"][2]) != 1) {
-		exit("start photo id not a number");
-	} else if (preg_match("/^\d$/", $_SERVER["argv"][2]) != 1) {
-		exit("end photo id not a number");
+} else {
+	if (preg_match("/^(\d+)-(\d+)$/", $_SERVER["argv"][2], $m) == 1) {
+		$startid = $m[1];
+		$endid   = $m[2];
+	} else {
+		exit("photo id wrong format");
 	}
-	for($id = $_SERVER["argv"][2]; $id < $_SERVER["argv"][3]; $id++){
+	for($id = $startid; $id <= $endid; $id++){
 		$download_url[] = "http://sdl-stickershop.line.naver.jp/products/0/0/1/".$sticker_id."/android/stickers/".$id.".png";
 	}
-} else {
-	exit("no end photo id");
 }
 @mkdir("downloads");
 $folder = "downloads/".$sticker_id." ".$name;
