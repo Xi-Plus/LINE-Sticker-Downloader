@@ -1,10 +1,10 @@
 # LINE-Sticker-Downloader
 
-##Usage
+## Usage
 `php downloader.php SID`  
 If you cannot access this sticker on Sticker Shop, use `php downloader.php SID PID`
 
-##Parameters
+## Parameters
 
 **SID**  
 format:`/\d+/`  
